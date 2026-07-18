@@ -4,10 +4,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+  # pull_request trigger removed: the Pull app now handles upstream sync via
+  # auto-merged PRs; keeping it caused dueling deploy triggers (per CIPP docs).
 
 jobs:
   build_and_deploy_job:
@@ -43,3 +41,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WITTY_SMOKE_0673E8703 }}
           action: "close"
+
